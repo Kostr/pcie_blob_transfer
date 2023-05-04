@@ -18,14 +18,29 @@ $ meson setup builddir
 $ cd builddir
 $ meson compile
 ```
-Build and run `pcie_blob_transfer`:
+Build and run `pcie_blob_transfer` (change `user` to your name):
 ```
 $ cd ~
 $ git clone https://github.com/Kostr/pcie_blob_transfer.git
 $ cd pcie_blob_transfer/OS
-$ g++ pcie_blob_transfer.cpp -L~/ipmi-blob-tool/builddir/src/ -lipmiblob -lpci -I~/ipmi-blob-tool/src/ -o pcie_blob_transfer
+$ g++ pcie_blob_transfer.cpp -L/home/user/ipmi-blob-tool/builddir/src/ -lipmiblob -lpci -I/home/user/ipmi-blob-tool/src/ -o pcie_blob_transfer
 $ sudo LD_LIBRARY_PATH=~/ipmi-blob-tool/builddir/src/ ./pcie_blob_transfer
 ```
+
+Here is an example of the program output:
+```
+BLOB 0: /pcie
+SessionID = 49899
+Send 21:0.0
+Send 01:0.1
+Send 01:0.3
+Send 21:0.1
+Send 01:0.0
+Send 01:0.2
+Commit
+BLOB 1: /smbios
+```
+
 After the program execution this file should be created on the BMC:
 ```
 /var/lib/pcie/pcie
