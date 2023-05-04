@@ -1,0 +1,23 @@
+[Defines]
+  INF_VERSION                    = 1.25
+  BASE_NAME                      = PCIeBlob_App
+  FILE_GUID                      = 9b69d799-fd8c-40d2-a2f3-49827e28f341
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = UefiMain
+
+[Sources]
+  PCIeBlob.c
+  KcsBmc.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiLib
+  IoLib
+
+[Protocols]
+  gEfiPciRootBridgeIoProtocolGuid
