@@ -84,3 +84,14 @@ If everything works correctly enable service to be launched on every boot:
 ```
 systemctl enable openbmc-pcie.service
 ```
+
+# Ignore list
+
+The code contains `InternalPCIDevice` function to filter PCIe devices internal to the chipset:
+```cpp
+bool InternalPCIDevice(uint16_t VendorId, uint16_t DeviceId)
+{
+  ...
+}
+```
+The current list corresponds to AMD EPYC CPUs (Naples/Rome/Milan), if you use different CPU, you would need to modify this function. Or you could drop this function to just send all PCIe devices in the system.
