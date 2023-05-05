@@ -8,6 +8,7 @@ Check out this guide for the process of [building a package with the modern EDK2
 
 The final images can be found in the `Build\OpenBmcPkg\RELEASE_GCC5\X64` folder:
 - `PCIeBlob_App.efi`
+- `PCIeBlob_Drv.efi`
 
 # `PCIeBlob_App.efi`
 
@@ -51,6 +52,20 @@ EFI_STATUS Status = ExecuteIpmiCmd(
                     );
 ```
 
+# `PCIeBlob_Drv.efi`
+
+If `PCIeBlob_App.efi` works, you can check that `PCIeBlob_Drv.efi` also transfer PCIe devices information.
+
+For that execute this command in UEFI Shell:
+```
+FS0:\> load PCIeBlob_Drv.efi
+```
+
+This wouldn't produce any output, but you can check BMC logs to check that information was transfered once again.
+```
+~# journalctl -u "pcie-mdrv2.service" -f
+```
+
 # Implementation details
 
 The implementation of the IPMI KCS transfer is mainly based on the one from the `edk2-platfroms` repo:
@@ -72,3 +87,8 @@ This change is performed in the `KcsBmc.h` and looks like this:
 # Modifying closed-sourced BIOS with `UEFITool`
 
 If you want to embed your module to the closed-source BIOS check out [this guide](https://github.com/Kostr/smbios_blob_transfer/blob/main/UEFI/standalone/README.md#modifying-closed-sourced-bios-with-uefitool).
+
+We need to insert not just the `PCIeBlob_Drv.efi` (PE32 image), but an FFS file containing PE32 image as a section. In our case it is produced here:
+```
+Build/OpenBmcPkg/RELEASE_GCC5/FV/Ffs/7be7246e-8ea1-413a-99fd-a8bd013266d2PCIeBlob_Drv/7be7246e-8ea1-413a-99fd-a8bd013266d2.ffs
+```
