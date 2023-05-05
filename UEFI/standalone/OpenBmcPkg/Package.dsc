@@ -26,3 +26,4 @@
 
 [Components]
   OpenBmcPkg/PCIeBlob_App/PCIeBlob.inf
+  OpenBmcPkg/PCIeBlob_Drv/PCIeBlob.inf
