@@ -23,4 +23,5 @@
   gEfiPciRootBridgeIoProtocolGuid
 
 [Depex]
-  gEfiPciRootBridgeIoProtocolGuid
+  gEfiPciRootBridgeIoProtocolGuid AND
+  gEfiPciEnumerationCompleteProtocolGuid
