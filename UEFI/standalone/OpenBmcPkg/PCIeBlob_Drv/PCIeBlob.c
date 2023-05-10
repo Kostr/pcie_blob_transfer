@@ -256,7 +256,7 @@ EFI_STATUS sendBlobCommand(UINT8 BlobCmd, UINT8* Request, UINT8 RequestLength, U
     return Status;
   }
 #ifdef DEBUG_IPMI_MESSAGES
-  DEBUG((EFI_D_ERROR, "RECEIVE BUF:\n"));
+  DEBUG((EFI_D_VERBOSE, "RECEIVE BUF:\n"));
   PrintBuffer(ReceiveBuf, ReceiveLength);
 #endif
 
