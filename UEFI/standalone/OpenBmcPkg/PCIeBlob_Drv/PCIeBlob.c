@@ -10,7 +10,6 @@
 #include <IpmiTransportProtocol.h>
 
 //#define DEBUG_IPMI_MESSAGES
-//#define DEBUG_SMBIOS_TABLES
 
 #define MAX_TEMP_DATA     160
 
