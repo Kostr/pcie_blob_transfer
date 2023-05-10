@@ -1,0 +1,29 @@
+[Defines]
+  INF_VERSION                    = 1.25
+  BASE_NAME                      = PCIeBlob
+  FILE_GUID                      = a017c46d-ddbb-44e8-b6b7-77e04f326c31
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = UefiMain
+
+[Sources]
+  PCIeBlob.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  MyIpmiPkg/MyIpmiPkg.dec
+  SegFeaturePkg/SegFeaturePkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiLib
+
+[Protocols]
+  gMyIpmiInterfaceProtocolGuid
+  gEfiPciRootBridgeIoProtocolGuid
+
+[Depex]
+  gEfiPciRootBridgeIoProtocolGuid AND
+  gEfiPciEnumerationCompleteProtocolGuid AND
+  gMyIpmiInterfaceProtocolGuid
