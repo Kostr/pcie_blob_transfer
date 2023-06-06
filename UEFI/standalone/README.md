@@ -2,6 +2,8 @@
 
 This folder contains fully independent `DXE_DRIVER` implementation that can be compiled with the modern [EDK2](https://github.com/tianocore/edk2). Instead of using some IPMI protocol from the BIOS vendor, this implementation has a fully working IPMI KCS transfer code. Besides the `DXE_DRIVER` this folder also contains an `UEFI_APPLICATION` to test the code in the UEFI Shell.
 
+If you don't want to build everything by yourself, the final binaries are provided in the [bin](bin) folder.
+
 # Building with EDK2
 
 Check out this guide for the process of [building a package with the modern EDK2](https://github.com/Kostr/smbios_blob_transfer/blob/main/UEFI/standalone/README.md#building-with-edk2).
